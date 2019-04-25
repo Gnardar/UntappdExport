@@ -79,9 +79,9 @@ function export_beers() {
 
 
 //--Run this until it states it is complete
-load_beers();
+// load_beers();
 //--Run this to export Beer Data
-export_beers();
+// export_beers();
 	
 	
 	
