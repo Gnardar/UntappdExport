@@ -85,7 +85,7 @@ function export_badges() {
 			console.log('Hit the bottom of the page!');
 		}
 		else if ((badges[i].attributes[1].value).includes("unearned-badge") == false){
-			console.log(i);
+			//console.log(i);
 			for (var x=0; x<badges[i].children.length; x++){
 				switch(badges[i].children[x].className) {
 				case "name":
@@ -102,13 +102,13 @@ function export_badges() {
 					break;
 				}				
 			}
-			console.log(tmp_name);
+			//console.log(tmp_name);
 			var temp_badge = {
 				badge_name: tmp_name,
 				date_unlocked: tmp_date,
 				badge_id: badges[i].dataset.badgeId,
 				bdage_level: tmp_lvl,
-				arr_index: i
+				//arr_index: i
 			};
 			output.push(temp_badge);
 		};
@@ -121,11 +121,10 @@ function export_badges() {
 };
 
 
-
 //--Run this until it states it is complete
-// load_beers();
+//load_beers();
 //--Run this to export Beer Data
-// export_beers();
+//export_beers();
 	
 	
 	
