@@ -77,6 +77,50 @@ function export_beers() {
 	console.log("Found " + output.length + " beers.. Enjoy!");
 }
 
+function export_badges() {
+	var badges = document.querySelectorAll('[data-track=badges]');
+	var output = [];
+	for (var i=0; i<badges.length; i++) {
+		if ((badges[i].attributes[1].value).includes("yellow")){
+			console.log('Hit the bottom of the page!');
+		}
+		else if ((badges[i].attributes[1].value).includes("unearned-badge") == false){
+			console.log(i);
+			for (var x=0; x<badges[i].children.length; x++){
+				switch(badges[i].children[x].className) {
+				case "name":
+					tmp_name = badges[i].children[x].textContent;
+					if(tmp_name.includes("Level")){
+						tmp_lvl = (tmp_name).match(/Level\s(\d+)/)[1];
+					}
+					else{
+						tmp_lvl = "1"
+					};
+					break;
+				case "date":
+					tmp_date = badges[i].children[x].textContent;
+					break;
+				}				
+			}
+			console.log(tmp_name);
+			var temp_badge = {
+				badge_name: tmp_name,
+				date_unlocked: tmp_date,
+				badge_id: badges[i].dataset.badgeId,
+				bdage_level: tmp_lvl,
+				arr_index: i
+			};
+			output.push(temp_badge);
+		};
+		//output;
+	};
+	
+	csvContent = arrayToCSV(output);
+
+	download(csvContent, "badgelist.csv", "text/csv");
+};
+
+
 
 //--Run this until it states it is complete
 // load_beers();
